@@ -61,8 +61,8 @@ header {
 }
 
 .btn2 {
- 
-  float: right;
+  overflow: auto;
+ float: right;
   padding: 10px 15px;
   border: 0;
   background: white;
@@ -70,6 +70,17 @@ header {
   border-radius: 5px;
   margin: 5px 0;
 }
+
+.btnsm {
+ 
+  float: right;
+  padding: 5px 5px;
+  border: 0;
+  background: white;
+  color: green;
+  border-radius: 2px;
+  margin: 3px 0;
+}v
 
 
 .btn:hover {
@@ -88,9 +99,9 @@ header {
   margin: 5px;
 }
 
-.success {
+.success{
   background: green;
-  color: green;
+  color: white;
   padding: 5px;
   margin: 5px;
 }

@@ -1,3 +1,7 @@
+
+
+
+
 const color_change_btn1=document.querySelector('#btn-1');
 const color_change_btn2=document.querySelector('#btn-2');
 const color_change_btn3=document.querySelector('#btn-3');
@@ -10,11 +14,16 @@ const h2=document.querySelector('#h1-2');
 
 
 //form
-const userList = document.querySelector('#users');
+const userList = document.querySelector('.items');
 const myForm = document.querySelector('#my-form');
 const name=document.querySelector('#name');
 const email=document.querySelector('#email');
 const msg=document.querySelector('.msg');
+
+//delete item list 
+
+
+
 
 myForm.addEventListener('submit', onSubmit);
 
@@ -24,21 +33,26 @@ function onSubmit(e){
 		  if(name.value===''||email.value===''){
 			msg.classList.add('error')
 			msg.innerHTML="please Enter all the fileds"
-			setTimeout(()=> msg.remove(),2200)
+             setTimeout(()=>{ msg.innerHTML=''  
+		 	msg.classList.remove('error')},2200)
 		}
-
 		  else{
 	const li = document.createElement('li');
-	const button = document.createElement('button');
-    li.appendChild(document.createTextNode(`${name.value}: ${email.value}   `  ));
+	const button = document.createElement('Button');
+	button.innerHTML='Delete';
+	button.classList.add('btnsm');
+	li.classList.add('item')
+    //li.appendChild(document.createTextNode(`name=${name.value}email=${email.value}`));
+    li.innerText="name"+"="+name.value+ " " + "email" +"="+email.value
+  
     li.appendChild(button);
     userList.appendChild(li);
     name.value = '';
     email.value = '';
             msg.classList.add('success')
 			msg.innerHTML="Data Added successfully"
-		    setTimeout(()=> msg.remove(),2200)
-
+		    setTimeout(()=>{ (msg.innerHTML='' ) 
+		 	msg.classList.remove('success')},2200)
 
 		  }
 		
@@ -47,12 +61,51 @@ function onSubmit(e){
 
 
 }
+// var lists,y;
+// //Remove List item 
+// // setInterval( () => {  lists=document.querySelectorAll("li")
 
 
 
+// console.log(lists.length)
+// }, 3000);\
 
 
+ setInterval( y=() =>{
+   const lists=document.querySelectorAll("li") 
+   // console.log(lists.length)
+  return lists
 
+	},3000);
+ 
+ 
+
+ 
+var lists=y();
+
+if (lists.length > 0){
+
+ lists.forEach( e => {
+	//console.log(e.lastElementChild)
+   e.lastElementChild.addEventListener('click',el => {
+   	el.preventDefault();
+   	 //console.log(el.target.parentNode.innerHTML);
+	//el.target.parentNode.remove();
+    console.log(el.target.innerText)
+   }); 	
+                // e.target.parentElement.remove();
+                // console.log(val);
+               
+           });
+}
+
+else{
+console.error("NOt ound anty lists ite ")
+
+}
+
+
+//function to change the random color of headers and form background 
 
 color_change_btn1.addEventListener('click', e => {
 	var rand_1 = myArray[Math.floor(Math.random() * myArray.length)];
@@ -65,23 +118,22 @@ color_change_btn1.addEventListener('click', e => {
 
 });
 
-color_change_btn2.addEventListener('mouseover',e=>{
+//function to change the font of Add User Data
 
-valtext=h2.innerHTML
-h2.innerHTML="<h6>" +valtext+  "</h6>"
-console.log(h2.innerText,"Small");
+color_change_btn2.addEventListener('mouseover',e=>{
+ const valtext=h2.innerText
+ h2.innerHTML="<h6>" +valtext+  "</h6>"
+ console.log(h2.innerText,"Small");
 
 });
 
+//function to change the font of Add User Data
 color_change_btn3.addEventListener('mouseover',e=>{
-
-valtext2= h2.innerHTML
+const valtext2= h2.innerText
 h2.innerHTML="<h1>" +valtext2+ "</h1>"
 console.log(h2.innerText,"large");
 
 });
-
-
 
 
 
