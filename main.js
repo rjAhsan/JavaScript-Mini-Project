@@ -14,7 +14,7 @@ const h2=document.querySelector('#h1-2');
 
 
 //form
-const userList = document.querySelector('.items');
+const userList = document.querySelector('.users');
 const myForm = document.querySelector('#my-form');
 const name=document.querySelector('#name');
 const email=document.querySelector('#email');
@@ -29,11 +29,10 @@ myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e){
 		  e.preventDefault();
-
-		  if(name.value===''||email.value===''){
+      if(name.value===''||email.value===''){
 			msg.classList.add('error')
 			msg.innerHTML="please Enter all the fileds"
-             setTimeout(()=>{ msg.innerHTML=''  
+      setTimeout(()=>{ msg.innerHTML=''  
 		 	msg.classList.remove('error')},2200)
 		}
 		  else{
@@ -41,7 +40,7 @@ function onSubmit(e){
 	const button = document.createElement('Button');
 	button.innerHTML='Delete';
 	button.classList.add('btnsm');
-	li.classList.add('item')
+	
     //li.appendChild(document.createTextNode(`name=${name.value}email=${email.value}`));
     li.innerText="name"+"="+name.value+ " " + "email" +"="+email.value
   
@@ -49,60 +48,75 @@ function onSubmit(e){
     userList.appendChild(li);
     name.value = '';
     email.value = '';
-            msg.classList.add('success')
+      msg.classList.add('success')
 			msg.innerHTML="Data Added successfully"
-		    setTimeout(()=>{ (msg.innerHTML='' ) 
+		  setTimeout(()=>{ (msg.innerHTML='' ) 
 		 	msg.classList.remove('success')},2200)
 
 		  }
 		
 
-		console.log(name.value,email.value);	         
+		//console.log(name.value,email.value);	         
 
 
 }
-// var lists,y;
-// //Remove List item 
-// // setInterval( () => {  lists=document.querySelectorAll("li")
 
 
+function getlistUser(){
 
-// console.log(lists.length)
-// }, 3000);\
-
-
- setInterval( y=() =>{
-   const lists=document.querySelectorAll("li") 
-   // console.log(lists.length)
-  return lists
-
-	},3000);
- 
- 
-
- 
-var lists=y();
-
-if (lists.length > 0){
-
- lists.forEach( e => {
-	//console.log(e.lastElementChild)
-   e.lastElementChild.addEventListener('click',el => {
-   	el.preventDefault();
-   	 //console.log(el.target.parentNode.innerHTML);
-	//el.target.parentNode.remove();
-    console.log(el.target.innerText)
-   }); 	
-                // e.target.parentElement.remove();
-                // console.log(val);
-               
-           });
+  const listdata=document.querySelectorAll(".users li")
+  if(listdata.length > 0){
+      return listdata
+}
+ else{
+ console.warn("Please Add some item Dynamicaly ");
+}
 }
 
-else{
-console.error("NOt ound anty lists ite ")
 
-}
+
+
+
+function getinterels(){
+  
+   setTimeout(y=() => {
+       return getlistUser() 
+        }
+  ,10000)}
+
+
+getinterels()
+
+var list= y();
+
+
+
+  //const lists= new getinterels();
+
+  
+
+if (list.length  > 0 ){
+      console.log(list)
+
+
+list.forEach( e => {
+  	//console.log(e.lastElementChild)
+     e.addEventListener('click',el => {
+     	el.preventDefault();
+     	 //console.log(el.target.parentNode.innerHTML);
+  	   el.target.parentNode.remove();
+      //	el.target.parentNode.remove()
+     }); 	
+                   //e.parentNode.remove();
+                  // console.log(val);
+                 
+             });
+  }
+
+  else{
+  console.error("NOt Found any lists items ")
+
+  }
 
 
 //function to change the random color of headers and form background 
